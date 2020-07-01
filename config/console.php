@@ -30,8 +30,10 @@ $config = [
             'class' => 'yii\console\controllers\MigrateController',
             'migrationPath' => [
                 '@app/migrations',
+                '@yii/log/migrations',
                 '@yii/web/migrations',
-                '@yii/rbac/migrations'
+                '@yii/rbac/migrations',
+                '@hscstudio/mimin/migrations'
             ], 
            
         ],

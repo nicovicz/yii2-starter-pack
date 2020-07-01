@@ -17,16 +17,27 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0"
-    },
-    "require-dev": {
+        "yiisoft/yii2-swiftmailer": "~2.0.0",
         "yiisoft/yii2-debug": "~2.0.0",
         "yiisoft/yii2-gii": "~2.0.0",
+        "thamtech/yii2-uuid": "*",
+        "hscstudio/yii2-mimin": "~1.1.5",
+        "mongosoft/yii2-soap-client": "*",
+        "nasution/terbilang": "^0.0.4",
+        "miloschuman/yii2-highcharts-widget": "^8.0",
+        "phpoffice/phpspreadsheet": "*",
+        "ext-sqlite3": "*",
+        "ext-pdo_sqlite": "*",
+        "yiisoft/yii2-bootstrap4": "^2.0"
+    },
+    "require-dev": {
         "yiisoft/yii2-faker": "~2.0.0",
-
         "codeception/base": "~2.3.0",
         "codeception/verify": "~0.4.0",
         "codeception/specify": "~0.4.6"
+    },
+    "autoload": {
+        "files": ["functions.php"]
     },
     "config": {
         "process-timeout": 1800,

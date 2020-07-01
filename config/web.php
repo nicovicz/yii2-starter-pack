@@ -9,12 +9,25 @@ $email = require __DIR__ . '/email.php';
 
 $config = [
     'id' => 'basic',
-    'language' => 'id-ID',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'timezone'=>'Asia/Jakarta',
     'aliases' => $alias,
+    'language'=>'id',
+    'timeZone'=>'Asia/Jakarta',
+    'as access' => [
+        'class' => '\hscstudio\mimin\components\AccessControl',
+        'allowActions' => [
+           '*'
+       ],
+    ],
     'components' => [
+        'formatter' => [
+            'dateFormat' => 'php:d F Y',
+            'datetimeFormat' => 'php:d F Y H:i',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => '.',
+            'currencyCode' => 'IDR',
+       ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'YKe_BbAB8jsoZ9laV25JzLiB9XFRl3KB',
