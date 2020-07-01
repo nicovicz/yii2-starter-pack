@@ -27,10 +27,15 @@ function flash($key,$value)
 
 function redirect($url,$checkAjax = true)
 {
-    \yii\web\Response::redirect($url , 302 , $checkAjax);
+    (new \yii\web\Response)->redirect($url , 302 , $checkAjax);
 }
 
 function refresh($anchor='')
 {
     return \Yii::$app->controller->refresh($anchor);
+}
+
+function __($text)
+{
+    return \Yii::t('app',$text);
 }

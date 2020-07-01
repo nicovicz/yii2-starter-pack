@@ -9,6 +9,7 @@ $email = require __DIR__ . '/email.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'App Name',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => $alias,
@@ -19,6 +20,9 @@ $config = [
         'allowActions' => [
            '*'
        ],
+    ],
+    'container'=>[
+        'definitions'=>$container
     ],
     'components' => [
         'formatter' => [
