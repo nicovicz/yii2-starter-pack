@@ -24,6 +24,11 @@ $config = [
     'container'=>[
         'definitions'=>$container
     ],
+    'modules'=>[
+        'utilitas'=>[
+            'class'=>'app\modules\utilitas\Module'
+        ]
+    ],
     'components' => [
         'formatter' => [
             'dateFormat' => 'php:d F Y',

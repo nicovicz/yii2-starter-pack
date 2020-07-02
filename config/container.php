@@ -1,6 +1,8 @@
 <?php
 return [
-   
+   'yii\grid\GridView'=>[
+       // 'headerOptions'=>['class'=>'text-center']
+   ],
     'yii\widgets\LinkPager'=>[
         'maxButtonCount'=>5,
     ],
@@ -14,6 +16,6 @@ return [
     'yii\grid\ActionColumn'=>[
         'header'=>'Aksi',
         'headerOptions'=>['class'=>'text-center'],
-        'contentOptions'=>['class'=>'text-center action','style'=>'vertical-align:middle']
+        'contentOptions'=>['class'=>'text-center action']
     ],
 ];?>

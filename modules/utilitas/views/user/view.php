@@ -1,5 +1,5 @@
 <?php
-use app\widgets\Panel;
+use app\widgets\Card;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use kartik\widgets\ActiveForm;
@@ -14,8 +14,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
 
-<?php Panel::begin([
-    'icon'=>'info-circle',
+<?php Card::begin([
+    'icon'=>'exclamation-circle',
     'title'=>'Detil User'
 ]);?>
 
@@ -53,12 +53,9 @@ $this->params['breadcrumbs'][] = $this->title;
     ])->label('Role'); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('<i class="fa fa-save"></i> Update', [
-            'class' => $authAssignment->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
-            'data-confirm'=>"Apakah anda yakin akan menyimpan data ini?",
-        ]) ?>
+        <?=$this->render('@app/widgets/save-button');?>
     </div>
     <?php ActiveForm::end(); ?>
 
-    <?php Panel::end();?>
+    <?php Card::end();?>
 </div>

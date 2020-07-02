@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Html;
+use app\widgets\Icon;
 use app\widgets\ActiveForm;
 use kartik\widgets\SwitchInput;
 
@@ -13,7 +13,7 @@ use kartik\widgets\SwitchInput;
 
 	<?php if ($model->isNewRecord) { ?>
 		<div class="alert alert-info">
-			<p class="text-info"><i class="fa fa-info-circle"></i> Default Password : 123456</p>
+		<?=Icon::fa('exclamation-circle');?></i> Default Password : 123456
 		</div>
 	<?php } ?>
 	<?php $form = ActiveForm::begin(); ?>
@@ -30,11 +30,9 @@ use kartik\widgets\SwitchInput;
 		]
 	]) ?>
 
-		<?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
 	<?php if (!$model->isNewRecord) { ?>
 		<fieldset> 
-			<legend style="color:#fff">Abaikan Jika Tidak Ingin Mengubah Password</legend>
+			<legend class="text-danger"> <h6><?=Icon::fa('exclamation-circle');?> Abaikan Jika Tidak Ingin Mengubah Password</h6></legend>
 		<div class="ui divider"></div>
 		<?= $form->field($model, 'new_password') ?>
 		<?= $form->field($model, 'repeat_password') ?>

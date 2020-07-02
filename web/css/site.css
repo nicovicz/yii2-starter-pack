@@ -41,7 +41,7 @@ a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
     display: inline-block;
-    font-family: 'Glyphicons Halflings';
+    font-family: 'Font Awesome 5 Free';
     font-style: normal;
     font-weight: normal;
     line-height: 1;
@@ -118,3 +118,34 @@ div.required label:after {
     content: ' *';
    
 }
+
+.glyphicon {
+    font-family: "Font Awesome 5 Free";
+  }
+  .glyphicon-eye-open:before {
+    content: "\f06e";
+    color: var(--success);
+  }
+  .glyphicon-pencil:before {
+    content: "\f044";
+    color: var(--primary);
+  }
+  .glyphicon-trash:before {
+    content: "\f2ed";
+    color: var(--danger);
+  }
+
+
+
+  .grid-view .table thead th a {
+    color:var(--primary);
+    text-align:center;
+    
+  }
+
+  .grid-view .table thead th {
+    color:var(--primary);
+    text-align:center;
+    background-color: #f8f9fc;
+  }
+  

@@ -1,7 +1,8 @@
 <?php
 
-use yii\helpers\Html;
+use app\widgets\Html;
 use yii\grid\GridView;
+use app\widgets\Card;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\administrator\models\AuthItemSearch */
@@ -12,12 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="auth-item-index">
 
-	
+<?php Card::begin(['title'=>$this->title,'icon'=>'folder-open']) ?>
 
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
-		'caption'=>'<h3><i class="fa fa-folder-open"></i> '.$this->title.'</h3>',
+		
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
 
@@ -38,5 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		],
 	]); ?>
+
+<?php Card::end();?>
 
 </div>

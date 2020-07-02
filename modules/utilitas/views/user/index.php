@@ -1,6 +1,7 @@
 <?php
 
-use yii\helpers\Html;
+use app\widgets\Html;
+use app\widgets\Card;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -12,12 +13,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-index">
 
-	<?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+	<?php Card::begin(['title'=>$this->title,'icon'=>'folder-open']) ?>
 
 	<?= GridView::widget([
 		'dataProvider' => $dataProvider,
 		'filterModel' => $searchModel,
-		'caption'=>'<h3><i class="fa fa-folder-open"></i> '.$this->title.'</h3>',
 		'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
 
@@ -75,5 +75,5 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		],
 	]); ?>
-
+	<?php Card::end();?>
 </div>
