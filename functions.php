@@ -27,7 +27,7 @@ function flash($key,$value)
 
 function redirect($url,$checkAjax = true)
 {
-    (new \yii\web\Response)->redirect($url , 302 , $checkAjax);
+    return (new \yii\web\Response)->redirect($url , 302 , $checkAjax);
 }
 
 function refresh($anchor='')
@@ -38,4 +38,20 @@ function refresh($anchor='')
 function __($text)
 {
     return \Yii::t('app',$text);
+}
+
+function is_logged()
+{
+    return !Yii::$app->user->isGuest;
+}
+
+function to_login()
+{
+    return Yii::$app->user->loginRequired();
+}
+
+
+function auth()
+{
+    return Yii::$app->user->identity;
 }

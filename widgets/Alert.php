@@ -59,8 +59,9 @@ class Alert extends \yii\bootstrap\Widget
             }
 
             foreach ((array) $flash as $i => $message) {
-                echo \yii\bootstrap\Alert::widget([
-                    'body' => $message,
+                $body = Html::tag('h4',Icon::fa('exclamation-triangle').' '.__('Perhatian'),['class'=>'alert-heading']);
+                echo \yii\bootstrap4\Alert::widget([
+                    'body' => $body.$message,
                     'closeButton' => $this->closeButton,
                     'options' => array_merge($this->options, [
                         'id' => $this->getId() . '-' . $type . '-' . $i,

@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use yii\bootstrap4\Alert;
+use app\widgets\Alert;
 use yii\helpers\Html;
 use app\assets\AppAsset;
 

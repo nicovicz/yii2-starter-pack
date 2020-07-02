@@ -209,4 +209,14 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+
+    public function can($name)
+    {
+        return Yii::$app->user->can($name);
+    }
+
+    public function logout()
+    {
+        return Yii::$app->user->logout();
+    }
 }

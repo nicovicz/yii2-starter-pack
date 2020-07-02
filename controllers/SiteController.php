@@ -70,6 +70,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+       
         return render('index');
     }
 
@@ -82,13 +83,13 @@ class SiteController extends Controller
     {
         $this->layout = '//login';
 
-        if (!Yii::$app->user->isGuest) {
-            return redirect(['index']);
+        if (is_logged()) {
+            return redirect(['/site/index']);
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return redirect(['index']);
+        if ($model->load(request()->post()) && $model->login()) {
+            return redirect(['/site/index']);
         }
 
         $model->password = '';
@@ -102,9 +103,9 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
+        auth()->logout();
 
-        return Yii::$app->user->loginRequired();
+        return to_login();
     }
 
     /**
@@ -116,9 +117,9 @@ class SiteController extends Controller
     {
         $this->layout = '//login';
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+        if ($model->load(request()->post()) && $model->signup()) {
             flash('success', __('Thank you for registration. Please check your inbox for verification email.'));
-            return $this->refresh();
+            return refresh();
         }
 
         return render('signup', compact(['model']));
@@ -133,7 +134,7 @@ class SiteController extends Controller
     {
         $this->layout = '//login';
         $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(request()->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 flash('success', __('Check your email for further instructions.'));
 
@@ -143,9 +144,7 @@ class SiteController extends Controller
             }
         }
 
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
+        return render('requestPasswordResetToken', compact(['model']));
     }
 
     /**
@@ -157,21 +156,20 @@ class SiteController extends Controller
      */
     public function actionResetPassword($token)
     {
+        $this->layout = '//login';
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-            flash('success', 'New password saved.');
+        if ($model->load(request()->post()) && $model->validate() && $model->resetPassword()) {
+            flash('success', __('New password saved.'));
 
-            return Yii::$app->user->loginRequired();
+            return to_login();
         }
 
-        return $this->render('resetPassword', [
-            'model' => $model,
-        ]);
+        return render('resetPassword', compact(['model']));
     }
 
     /**
@@ -189,14 +187,14 @@ class SiteController extends Controller
             throw new BadRequestHttpException($e->getMessage());
         }
         if ($user = $model->verifyEmail()) {
-            if (Yii::$app->user->login($user)) {
-                flash('success', 'Your email has been confirmed!');
-                return $this->goHome();
-            }
+            
+            flash('success', __('Your email has been confirmed!'));
+            return to_login();
+            
         }
 
-        flash('error', 'Sorry, we are unable to verify your account with provided token.');
-        return $this->goHome();
+        flash('error', __('Sorry, we are unable to verify your account with provided token.'));
+        return to_login();
     }
 
     /**
@@ -209,15 +207,13 @@ class SiteController extends Controller
         $model = new ResendVerificationEmailForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                flash('success', 'Check your email for further instructions.');
-                return $this->goHome();
+                flash('success', __('Check your email for further instructions.'));
+                return refresh();
             }
-            flash('error', 'Sorry, we are unable to resend verification email for the provided email address.');
+            flash('error', __('Sorry, we are unable to resend verification email for the provided email address.'));
         }
 
-        return $this->render('resendVerificationEmail', [
-            'model' => $model
-        ]);
+        return render('resendVerificationEmail', compact(['model']));
     }
 
 }
