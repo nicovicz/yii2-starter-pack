@@ -1,7 +1,5 @@
 <?php
 
-use app\widgets\Icon;
-use app\widgets\ActiveForm;
 use kartik\widgets\SwitchInput;
 
 /* @var $this yii\web\View */
@@ -11,12 +9,14 @@ use kartik\widgets\SwitchInput;
 
 <div class="user-form">
 
-	<?php if ($model->isNewRecord) { ?>
+	<?php if ($model->isNewRecord): ?>
 		<div class="alert alert-info">
 		<?=Icon::fa('exclamation-circle');?></i> Default Password : 123456
 		</div>
-	<?php } ?>
-	<?php $form = ActiveForm::begin(); ?>
+	<?php endif; ?>
+	<?php $form = ActiveForm::begin([
+		'type'=> ActiveForm::CRUD_TYPE
+	]); ?>
 
 	<?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
@@ -25,8 +25,8 @@ use kartik\widgets\SwitchInput;
 	
 	<?= $form->field($model, 'status')->widget(SwitchInput::classname(), [
 		'pluginOptions' => [
-			'onText' => 'Active',
-			'offText' => 'Banned',
+			'onText' => __('Aktif'),
+			'offText' => __('Tidak Aktif'),
 		]
 	]) ?>
 

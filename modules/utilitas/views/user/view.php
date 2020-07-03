@@ -1,8 +1,5 @@
 <?php
-use app\widgets\Card;
-use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\widgets\ActiveForm;
 use kartik\widgets\Select2;
 
 /* @var $this yii\web\View */

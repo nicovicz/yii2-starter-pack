@@ -17,8 +17,8 @@ class ApiController extends Controller
             'options' => [
                 'cache_wsdl' => WSDL_CACHE_NONE,
                 'trace' => 1,
-                'login'=>'getdatasik',
-                'password'=>'123456',
+                'login'=>'',
+                'password'=>'',
                 'exception' => 1,
                 'connection_timeout' => 15,
             ]

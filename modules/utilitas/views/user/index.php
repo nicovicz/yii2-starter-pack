@@ -1,9 +1,5 @@
 <?php
 
-use app\widgets\Html;
-use app\widgets\Card;
-use yii\grid\GridView;
-
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\administrator\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */

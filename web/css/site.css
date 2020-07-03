@@ -49,26 +49,32 @@ a.asc:after, a.desc:after {
 }
 
 a.asc:after {
-    content: /*"\e113"*/ "\e151";
+    font-family: 'Font Awesome 5 Free';
+    content: "\f044";
 }
 
 a.desc:after {
-    content: /*"\e114"*/ "\e152";
+    font-family: 'Font Awesome 5 Free';
+    content:  "\f0dd";
 }
 
 .sort-numerical a.asc:after {
+    font-family: 'Font Awesome 5 Free';
     content: "\e153";
 }
 
 .sort-numerical a.desc:after {
+    font-family: 'Font Awesome 5 Free';
     content: "\e154";
 }
 
 .sort-ordinal a.asc:after {
+    font-family: 'Font Awesome 5 Free';
     content: "\e155";
 }
 
 .sort-ordinal a.desc:after {
+    font-family: 'Font Awesome 5 Free';
     content: "\e156";
 }
 

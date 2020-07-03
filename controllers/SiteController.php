@@ -70,7 +70,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-       
+        \app\helpers\ESign::sign();
+        die;
         return render('index');
     }
 

@@ -1,8 +1,10 @@
-<div class="col-lg-12">
+
 
     <hr/>
- <div class="pull-right clearfix">
-
+ <div class="pull-right">
+    <?=$this->render('@widgetsButtons/save-button');?>
+    <?=$this->render('@widgetsButtons/reset-button');?>
+    <?=$this->render('@widgetsButtons/back-button');?>
 </div>
 
-</div>
+
