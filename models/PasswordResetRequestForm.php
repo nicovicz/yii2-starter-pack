@@ -5,13 +5,14 @@ use Yii;
 use yii\base\Model;
 use app\models\User;
 
+
 /**
  * Password reset request form
  */
 class PasswordResetRequestForm extends Model
 {
     public $email;
-
+    public $captcha;
 
     /**
      * {@inheritdoc}
@@ -25,8 +26,17 @@ class PasswordResetRequestForm extends Model
             ['email', 'exist',
                 'targetClass' => '\app\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => 'Email Tidak Ditemukan.'
+                'message' => __('Email Tidak Ditemukan.')
             ],
+            ['captcha', 'captcha'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'captcha' => Yii::t('app', 'Kode Verifikasi'),
+         
         ];
     }
 

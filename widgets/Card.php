@@ -1,9 +1,5 @@
 <?php
-namespace app\widgets;
-
-use yii\base\Widget;
-
-class Card extends Widget
+class Card extends \yii\base\Widget
 {
     public $title = '';
 	public $icon = '';

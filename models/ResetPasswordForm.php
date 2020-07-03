@@ -11,7 +11,8 @@ use app\models\User;
 class ResetPasswordForm extends Model
 {
     public $password;
-
+    public $captcha;
+    public $cpassword;
     /**
      * @var \common\models\User
      */
@@ -45,6 +46,16 @@ class ResetPasswordForm extends Model
         return [
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['captcha', 'captcha'],
+            ['cpassword', 'compare','compareAttribute'=>'password'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'captcha' => Yii::t('app', 'Kode Verifikasi'),
+            'cpassword' => Yii::t('app', 'Konfirmasi Password'),
         ];
     }
 

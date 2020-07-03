@@ -204,8 +204,9 @@ class SiteController extends Controller
      */
     public function actionResendVerificationEmail()
     {
+        $this->layout = '//login';
         $model = new ResendVerificationEmailForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(request()->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 flash('success', __('Check your email for further instructions.'));
                 return refresh();

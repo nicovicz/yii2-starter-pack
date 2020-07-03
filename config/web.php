@@ -58,7 +58,7 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => $mailer,
+        'mailer' => $email,
         'log' => $log,
         'db' => $db,
         'urlManager' => [

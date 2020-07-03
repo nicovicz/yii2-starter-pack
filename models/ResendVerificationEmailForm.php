@@ -13,7 +13,7 @@ class ResendVerificationEmailForm extends Model
      * @var string
      */
     public $email;
-
+    public $captcha;
 
     /**
      * {@inheritdoc}
@@ -27,8 +27,17 @@ class ResendVerificationEmailForm extends Model
             ['email', 'exist',
                 'targetClass' => '\app\models\User',
                 'filter' => ['status' => User::STATUS_INACTIVE],
-                'message' => 'There is no user with this email address.'
+                'message' => __('There is no user with this email address.')
             ],
+            ['captcha', 'captcha'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'captcha' => Yii::t('app', 'Kode Verifikasi'),
+         
         ];
     }
 

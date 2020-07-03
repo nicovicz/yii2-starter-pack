@@ -1,6 +1,4 @@
-<?php
-use yii\helpers\Html;
-?>
+
  <p>
         <?=$this->render('@app/widgets/back-button');?>
         

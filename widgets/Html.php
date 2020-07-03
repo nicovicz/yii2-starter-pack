@@ -1,36 +1,30 @@
 <?php
-namespace app\widgets;
-
-use Yii;
-use yii\helpers\Url;
-
-class Html extends \yii\bootstrap4\Html
+final class Html extends \yii\bootstrap4\Html
 {
-    public static function SubmitButtonIcon($name,$icon,$class)
+
+    public static function buttonIcon($name,array $options)
     {
+        $icon = ArrayHelper::remove($options, 'icon');
+        Html::addCssClass($options,'btn-icon-split');
+        
         return static::submitButton(
-            Html::tag('span',Icon::fa($icon),
+            Html::tag('span',$icon,
             ['class'=>'icon text-white-50']).
-            Html::tag('span',__($name),['class'=>'text']), 
-            ['class' => "btn $class btn-icon-split "]);
+            Html::tag('span',$name,['class'=>'text']), 
+           $options);
     }
 
-    public static function resetButtonIcon($name,$icon,$class)
+    public static function linkIcon($name,$url,array $options)
     {
-        return static::resetButton(
-            Html::tag('span',Icon::fa($icon),
-            ['class'=>'icon text-white-50']).
-            Html::tag('span',__($name),['class'=>'text']), 
-            ['class' => "btn $class btn-icon-split "]);
-    }
-
-    public static function linkButtonIcon($name,array $url,$icon,$class='')
-    {
+        $icon = ArrayHelper::remove($options, 'icon');
+        Html::addCssClass($options,'btn-icon-split');
         return static::a(
-            Html::tag('span',Icon::fa($icon),
+            Html::tag('span',$icon,
             ['class'=>'icon text-white-50']).
-            Html::tag('span',__($name),['class'=>'text']), 
-            Url::to($url),
-            ['class' => "btn $class btn-icon-split"]);
+            Html::tag('span',$name,['class'=>'text']), 
+            $url,
+            $options);
     }
+
+   
 }

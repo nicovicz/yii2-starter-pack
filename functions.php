@@ -55,3 +55,8 @@ function auth()
 {
     return Yii::$app->user->identity;
 }
+
+function to_route(array $route)
+{
+    return \Url::to($route);
+}

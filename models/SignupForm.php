@@ -13,7 +13,8 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
-
+    public $cpassword;
+    public $captcha;
 
     /**
      * {@inheritdoc}
@@ -33,7 +34,19 @@ class SignupForm extends Model
             ['email', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This email address has already been taken.'],
 
             ['password', 'required'],
+            ['cpassword', 'required'],
+           
             ['password', 'string', 'min' => 6],
+            ['captcha', 'captcha'],
+            ['cpassword', 'compare','compareAttribute'=>'password'],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'captcha' => Yii::t('app', 'Kode Verifikasi'),
+            'cpassword' => Yii::t('app', 'Konfirmasi Password'),
         ];
     }
 

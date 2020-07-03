@@ -1,19 +1,11 @@
 <?php
-
-/* @var $this yii\web\View */
-/* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\SignupForm */
-
-use app\widgets\Html;
-use yii\bootstrap4\ActiveForm;
-
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-signup">
    
 
-    <p>Please fill out the following fields to signup:</p>
+    <p class="text-center"><?=__('Please fill out the following fields to signup:');?></p>
 
 
             <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
@@ -24,9 +16,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <div class="form-group">
-                <?=Html::submitButtonIcon('Daftar','level-up-alt','btn btn-primary');?>
-                <?=Html::linkButtonIcon('Kembali',['/site/login'],'arrow-circle-left','btn btn-warning');?>
+                <?= $form->field($model, 'cpassword')->passwordInput() ?>
+
+                <?= $form->field($model, 'captcha')->widget(\yii\captcha\Captcha::class) ?>
+
+                <div class="form-group ">
+                <?=Html::buttonIcon(__('Daftar'),[
+                    'type'=>'submit',
+                    'icon'=>Icon::fa('level-up-alt'),
+                    'class'=>'btn btn-primary'
+                ]);?>
+                <?=Html::linkIcon('Kembali',to_route(['/site/login']),[
+                    'icon'=>Icon::fa('arrow-circle-left'),
+                    'class'=>'btn btn-warning'
+                ]);?>
                 </div>
 
             <?php ActiveForm::end(); ?>

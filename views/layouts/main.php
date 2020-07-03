@@ -3,9 +3,6 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use yii\helpers\Html;
-use yii\helpers\Url;
-use app\widgets\Alert;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
